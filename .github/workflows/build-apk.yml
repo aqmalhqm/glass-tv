@@ -27,16 +27,16 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build release APK
+      - name: Build debug APK
         working-directory: launcher
         run: |
           chmod +x gradlew
-          ./gradlew --no-daemon assembleRelease
+          ./gradlew --no-daemon assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: glass-tv-release-apk
-          path: launcher/app/build/outputs/apk/release/*.apk
+          name: glass-tv-debug-apk
+          path: launcher/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 7
